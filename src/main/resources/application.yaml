@@ -27,3 +27,5 @@ logging.level:
 settings:
   default-limit: 10000
   reset-schedule: "0 0 0 * * ?"
+  transaction-check-schedule: "* * * * * ?"
+  transaction-commit-waiting-time: "60s"

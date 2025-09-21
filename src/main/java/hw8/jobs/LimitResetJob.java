@@ -17,7 +17,6 @@ public class LimitResetJob {
 
     @Scheduled(cron = "${settings.reset-schedule}")
     public void reset() {
-        log.info("Reset limits");
         limitRepository.findAll()
                 .forEach(limit -> {
                     limit.setClientLimit(appSettings.getDefaultLimit());

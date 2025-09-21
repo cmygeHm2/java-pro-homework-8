@@ -1,0 +1,11 @@
+package hw8.dto;
+
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+
+@AllArgsConstructor
+@Getter
+public class ErrorDto {
+    private String message;
+    private int code;
+}

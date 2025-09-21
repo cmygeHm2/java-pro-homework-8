@@ -1,0 +1,54 @@
+
+### 400 bad request(invalid client id)
+POST http://localhost:8080/api/limits/reserve
+Content-Type: application/json
+
+{
+  "clientLimit": 323.92
+}
+
+
+### 400 bad request (negative limit)
+POST http://localhost:8080/api/limits/reserve
+Content-Type: application/json
+
+{
+  "clientId": 1,
+  "clientLimit": -323.92
+}
+
+
+### 400 bad request (limit not defined)
+POST http://localhost:8080/api/limits/reserve
+Content-Type: application/json
+
+{
+  "clientId": 1
+}
+
+
+### 406 not enough money
+POST http://localhost:8080/api/limits/reserve
+Content-Type: application/json
+
+{
+  "clientId": 1,
+  "clientLimit": 2234433
+}
+
+
+
+### 200
+POST http://localhost:8080/api/limits/reserve
+Content-Type: application/json
+
+{
+  "clientId": 2,
+  "clientLimit": 50
+}
+
+
+### 200
+POST http://localhost:8080/api/limits/commit/37ba9fbf-cdeb-4b14-b390-be434ab50116
+
+
