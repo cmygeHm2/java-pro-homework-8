@@ -1,5 +1,7 @@
 package hw8.rest;
 
+import hw8.dto.ErrorDto;
+import hw8.exception.NotEnoughMoneyException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -14,21 +16,21 @@ import static org.springframework.http.HttpStatus.*;
 @RequiredArgsConstructor
 public class GlobalControllerAdvice extends ResponseEntityExceptionHandler {
 
-//    @ExceptionHandler(IllegalArgumentException.class)
-//    @ResponseStatus(BAD_REQUEST)
-//    protected ErrorDto handleIllegalArgumentException(IllegalArgumentException ex) {
-//        return new ErrorDto(ex.getMessage());
-//    }
-//
+    @ExceptionHandler(IllegalArgumentException.class)
+    @ResponseStatus(BAD_REQUEST)
+    protected ErrorDto handleIllegalArgumentException(IllegalArgumentException ex) {
+        return new ErrorDto(ex.getMessage(), BAD_REQUEST.value());
+    }
+
 //    @ExceptionHandler(RecordNotFoundException.class)
 //    @ResponseStatus(NOT_FOUND)
 //    protected ErrorDto handleRecordNotFoundException(RecordNotFoundException ex) {
 //        return new ErrorDto(ex.getMessage());
 //    }
 //
-//    @ExceptionHandler(NotEnoughMoneyException.class)
-//    @ResponseStatus(PAYMENT_REQUIRED)
-//    protected ErrorDto handleNotEnoughMoneyException(NotEnoughMoneyException ex) {
-//        return new ErrorDto(ex.getMessage());
-//    }
+    @ExceptionHandler(NotEnoughMoneyException.class)
+    @ResponseStatus(PAYMENT_REQUIRED)
+    protected ErrorDto handleNotEnoughMoneyException(NotEnoughMoneyException ex) {
+        return new ErrorDto(ex.getMessage(), PAYMENT_REQUIRED.value());
+    }
 }
