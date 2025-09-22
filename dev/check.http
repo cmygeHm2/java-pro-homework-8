@@ -27,7 +27,7 @@ Content-Type: application/json
 }
 
 
-### 406 not enough money
+### 402 not enough money
 POST http://localhost:8080/api/limits/reserve
 Content-Type: application/json
 

@@ -1,0 +1,20 @@
+В файле dev/check.http приведены примеры запросов.
+
+1. Делаем резервирование лимита
+
+POST http://localhost:8080/api/limits/reserve
+Content-Type: application/json
+
+{
+  "clientId": 2,
+  "clientLimit": 500
+}
+
+Если в течении settings.transaction-commit-waiting-time транзакция не была подтверждена, то произойдет откат резервированного лимита обратно.
+
+2. Делаем подтверждение транзакции
+
+POST http://localhost:8080/api/limits/commit/a1df5fea-77ec-4802-a7e9-8a4bc90e3128
+
+хеш передаем из ответа, полученного при резервации лимита
+
